@@ -16,6 +16,12 @@ def _read():
     with open(filename, 'r') as f:
         return f.read()
 
+def copy(string):
+    _write(string)
+
+def paste(string):
+    return _read()
+
 if sys.argv[-1] in ('c', 'copy'):
     _clean()
     if sys.stdin.isatty():
@@ -30,6 +36,8 @@ if sys.argv[-1] in ('c', 'copy'):
         for line in sys.stdin:
             print(line, end='')
             _write(line)
+            
+        print("\nCopying finished.")
 
 else:
     print(_read())
